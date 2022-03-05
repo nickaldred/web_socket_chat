@@ -38,7 +38,8 @@ $("#input-form").on("submit", function(event) {
   $("#input-text")[0].value = "";
 });
 
-var delayInMilliseconds = 2000; //1 second
+
+//A function that checks the input text for SQL injection
 
 function input_validation(handle, text) {
   if (handle.includes("SELECT", "UPDATE", "DELETE", "INSERT INTO", "CREATE DATABASE", "ALTER DATABASE", "CREATE TABLE", "ALTER TABLE", "DROP TABLE", "CREATE INDEX", "DROP INDEX")) {   
@@ -49,7 +50,7 @@ function input_validation(handle, text) {
 
   }
 
-  else if (text.includes("SELECT", "UPDATE", "DELETE", "INSERT INTO", "CREATE DATABASE", "ALTER DATABASE", "CREATE TABLE", "ALTER TABLE", "DROP TABLE", "CREATE INDEX", "DROP INDEX")) {
+  else if (text.includes("SELECT" || "UPDATE"|| "DELETE" || "INSERT INTO" || "CREATE DATABASE" || "ALTER DATABASE" || "CREATE TABLE" || "ALTER TABLE" || "DROP TABLE" || "CREATE INDEX" || "DROP INDEX")) {
     const myElement = document.getElementById("error");
     myElement.style.display = "block";
     myElement.textContent = 'Attempted SQL injection! Leave Now!';
