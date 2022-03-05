@@ -39,7 +39,7 @@ $("#input-form").on("submit", function(event) {
 });
 
 
-//A function that checks the input text for SQL injection
+//Checks the input handle and text for SQL injection
 
 function input_validation(handle, text) {
   if (handle.includes("SELECT") || handle.includes("UPDATE")|| handle.includes("DELETE") || handle.includes("INSERT INTO") || handle.includes("CREATE DATABASE") || handle.includes("ALTER DATABASE") || handle.includes("CREATE TABLE") || handle.includes("ALTER TABLE") || handle.includes("DROP TABLE") || handle.includes("CREATE INDEX") || handle.includes("DROP INDEX")) {   
