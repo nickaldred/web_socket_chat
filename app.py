@@ -5,12 +5,19 @@ import logging
 import redis
 import gevent
 from flask_sockets import Sockets
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 REDIS_URL = os.environ['REDIS_URL']
 REDIS_CHAN = 'chat'
 
 
 app = Flask(__name__)
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["2000 per day", "5 per hour"]
+)
 
 
 @app.route("/")
