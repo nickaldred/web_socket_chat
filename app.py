@@ -13,13 +13,15 @@ REDIS_CHAN = 'chat'
 
 
 app = Flask(__name__)
+
+#Code to implement a rate limit to protect from DOS attacks.
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["2000 per day", "5 per hour"]
+    default_limits=["10000 per day", "2000 per hour"]
 )
 
-
+#routes the 4 main pages of the web app using flask
 @app.route("/")
 def home():
     return (render_template("index.html"))
