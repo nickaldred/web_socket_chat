@@ -50,7 +50,7 @@ function input_validation(handle, text) {
 
   }
 
-  else if (text.includes("SELECT" || "UPDATE"|| "DELETE" || "INSERT INTO" || "CREATE DATABASE" || "ALTER DATABASE" || "CREATE TABLE" || "ALTER TABLE" || "DROP TABLE" || "CREATE INDEX" || "DROP INDEX")) {
+  else if (text.includes("SELECT") || text.includes("UPDATE")|| text.includes("DELETE") || text.includes("INSERT INTO") || text.includes("CREATE DATABASE") || text.includes("ALTER DATABASE") || text.includes("CREATE TABLE") || text.includes("ALTER TABLE") || text.includes("DROP TABLE") || text.includes("CREATE INDEX") || text.includes("DROP INDEX")) {
     const myElement = document.getElementById("error");
     myElement.style.display = "block";
     myElement.textContent = 'Attempted SQL injection! Leave Now!';
