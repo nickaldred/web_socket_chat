@@ -57,11 +57,4 @@ function input_validation(handle, text) {
 
   }
 
-  else if ((typeof text != "string") (typeof text != "string")) {
-    const myElement = document.getElementById("error");
-    myElement.style.display = "block";
-    myElement.textContent = 'Please only submit strings';
-    throw 'Attempted to submit non-string type'
-  }
-
 }
