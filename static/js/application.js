@@ -31,7 +31,37 @@ $("#input-form").on("submit", function(event) {
   event.preventDefault();
   var handle = $("#input-handle")[0].value;
   var text   = $("#input-text")[0].value;
+  input_validation(JSON.stringify(handle), JSON.stringify(text))
+  console.log(JSON.stringify({ handle: handle, text: text }))
   outbox.send(JSON.stringify({ handle: handle, text: text }));
   console.log("button sending " + JSON.stringify({ handle: handle, text: text }))
   $("#input-text")[0].value = "";
 });
+
+var delayInMilliseconds = 2000; //1 second
+
+function input_validation(handle, text) {
+  if (handle.includes("SELECT", "UPDATE", "DELETE", "INSERT INTO", "CREATE DATABASE", "ALTER DATABASE", "CREATE TABLE", "ALTER TABLE", "DROP TABLE", "CREATE INDEX", "DROP INDEX")) {   
+    const myElement = document.getElementById("error");
+    myElement.style.display = "block";
+    myElement.textContent = 'Attempted SQL injection! Leave Now!';
+    throw 'Attempted SQL injection! Leave Now!'
+
+  }
+
+  else if (text.includes("SELECT", "UPDATE", "DELETE", "INSERT INTO", "CREATE DATABASE", "ALTER DATABASE", "CREATE TABLE", "ALTER TABLE", "DROP TABLE", "CREATE INDEX", "DROP INDEX")) {
+    const myElement = document.getElementById("error");
+    myElement.style.display = "block";
+    myElement.textContent = 'Attempted SQL injection! Leave Now!';
+    throw 'Attempted SQL injection! Leave Now!' 
+
+  }
+
+  else if ((typeof text != "string") (typeof text != "string")) {
+    const myElement = document.getElementById("error");
+    myElement.style.display = "block";
+    myElement.textContent = 'Please only submit strings';
+    throw 'Attempted to submit non-string type'
+  }
+
+}
