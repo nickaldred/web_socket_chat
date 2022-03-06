@@ -18,7 +18,7 @@ app = Flask(__name__)
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["10000 per day", "2000 per hour"]
+    default_limits=["10000 per day", "5 per hour"]
 )
 
 #routes the 4 main pages of the web app using flask
